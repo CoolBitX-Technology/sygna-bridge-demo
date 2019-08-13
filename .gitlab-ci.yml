@@ -20,7 +20,6 @@ pages:
     - npm install # Install all dependencies
     - unset CI
     - npm run build --prod # Build for prod
-    - cp public/index.html public/404.html
     - mv public _public # CRA and gitlab pages both use the public folder. Only do this in a build pipeline.
     - mv build public # Move build files to public dir for Gitlab Pages
   artifacts:
