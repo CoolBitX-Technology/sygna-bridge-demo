@@ -1,0 +1,3 @@
+export const ERROR = "ERROR";
+export const TRANSFER_REQUEST = "TRANSFER_REQUEST";
+export const TRANSFER_LOADED = "TRANSFER_LOADED";
