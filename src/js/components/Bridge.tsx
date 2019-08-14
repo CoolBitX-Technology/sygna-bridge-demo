@@ -17,44 +17,41 @@ const mapStateToProps = (state: AppState) => {
 class Bridge extends Component<BridgeProps, any> {
     constructor(props: BridgeProps) {
         super(props);
-        this.state = {};
+        this.state = {
+            open_id: ""
+        };
         this.showDetail = this.showDetail.bind(this);
     }
 
-    showDetail(event: any, transferId: string, itemIdx: number = 0) {
+    showDetail(event: any, transfer_id: string, idx: number = 0) {
         event.preventDefault();
+        this.setState({
+            open_id: (event.target.value === "true") ? "" : transfer_id
+        });
     }
 
     render() {
         const {sign_objects} = this.props;
         return (
-            <div className="table-responsive">
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Originator VASP</th>
-                            <th scope="col">Beneficiary VASP</th>
-                            <th scope="col">Beneficiary</th>
-                            <th scope="col">Status</th>
-                            <th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
+            <div className="grid-striped">
+                <div className="row font-weight-bold py-2">
+                    <div className="col">#</div>
+                    <div className="col">Originator VASP</div>
+                    <div className="col">Beneficiary VASP</div>
+                    <div className="col">Beneficiary</div>
+                    <div className="col">Result</div>
+                    <div className="col"></div>
+                </div>
                 {sign_objects.map((el, idx) => (
                         <Transfer
                             key={idx}
                             idx={idx}
-                            transferId={el.id}
-                            originator_vasp_code={el.transaction.originator_vasp_code}
-                            beneficiary_vasp_code={el.transaction.beneficiary_vasp_code}
-                            beneficiary_name={el.transaction.beneficiary_name}
-                            handleClick={(event: any) => this.showDetail(event, el.id, idx)}
+                            open={(this.state.open_id === el.transfer_id) ? true : false}
+                            sign_object={el}
+                            handleClick={(event: any) => this.showDetail(event, el.transfer_id, idx)}
                         />
                     )
                 )}
-                    </tbody>
-                </table>
             </div>
         );
     }

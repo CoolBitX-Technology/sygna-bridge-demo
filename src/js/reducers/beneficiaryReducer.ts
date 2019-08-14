@@ -1,6 +1,11 @@
 import {BeneficiaryState} from "./types";
 import {BridgeActionTypes} from "../actions/types";
-import {TRANSFER_LOADED} from "../constants/action-types";
+import {
+    TRANSFER_DECRYPT_RESULT,
+    TRANSFER_LOADED,
+    TRANSFER_RESULT_SIGN,
+    TRANSFER_VERIFY_RESULT
+} from "../constants/action-types";
 import {NONE} from "../constants/status";
 
 const initialState = {
@@ -18,7 +23,7 @@ const initialState = {
         },
         "data_dt": "",
         "signature": "f6f7bab547bde36e4a020b013cefd37d36379d92f6f295d3fedb00a2b1a8ddf074fa246b9e5a1c9e33ec103838dcae5fa08f1d9cd9e782612f793216040497e6",
-        "id": "176ee01d-8be8-47ba-90a7-4d1a2cce8b33"
+        "transfer_id": "176ee01d-8be8-47ba-90a7-4d1a2cce8b33"
     },
     originator_info: {
         name: "",
@@ -30,9 +35,29 @@ const initialState = {
 };
 
 export function beneficiaryReducer(state: BeneficiaryState = initialState, action: BridgeActionTypes): BeneficiaryState {
+    const {sign_object} = state;
     if (action.type === TRANSFER_LOADED) {
         return Object.assign({}, state, {
-            sign_object: action.payload
+            sign_object: action.payload,
+            verified_status: NONE
+        });
+    }
+    if (action.type === TRANSFER_RESULT_SIGN) {
+        const {result} = action.payload;
+        return Object.assign({}, state, {
+            sign_object: Object.assign({}, sign_object, {
+                result
+            })
+        });
+    }
+    if (action.type === TRANSFER_DECRYPT_RESULT) {
+        return Object.assign({}, state, {
+            originator_info: action.payload
+        });
+    }
+    if (action.type === TRANSFER_VERIFY_RESULT) {
+        return Object.assign({}, state, {
+            verified_status: action.payload
         });
     }
     return state;

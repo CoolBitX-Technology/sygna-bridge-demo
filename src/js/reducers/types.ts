@@ -29,6 +29,12 @@ export interface TransferInfo {
     amount: number
 }
 
+export interface TransferResult {
+    transfer_id: string,
+    result: string,
+    signature: string
+}
+
 export interface OriginatorInfo {
     name: string,
     physical_address: string,

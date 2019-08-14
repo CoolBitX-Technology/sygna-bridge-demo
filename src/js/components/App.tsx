@@ -2,7 +2,7 @@ import React from "react";
 import Originator from "./Originator";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
-import LogoImg from "../../logo.png";
+import LogoImg from "../../assets/img/logo.png";
 import Beneficiary from "./Beneficiary";
 import Bridge from "./Bridge";
 

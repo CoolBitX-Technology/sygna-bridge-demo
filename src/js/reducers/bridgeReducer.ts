@@ -1,6 +1,6 @@
 import {BridgeState} from "./types";
 import {BridgeActionTypes} from "../actions/types";
-import {TRANSFER_LOADED} from "../constants/action-types";
+import {TRANSFER_LOADED, TRANSFER_RESULT_SIGN} from "../constants/action-types";
 
 const initState = {
     sign_objects: [
@@ -17,15 +17,32 @@ const initState = {
             },
             "data_dt": "",
             "signature": "f6f7bab547bde36e4a020b013cefd37d36379d92f6f295d3fedb00a2b1a8ddf074fa246b9e5a1c9e33ec103838dcae5fa08f1d9cd9e782612f793216040497e6",
-            "id": "176ee01d-8be8-47ba-90a7-4d1a2cce8b33"
+            "transfer_id": "176ee01d-8be8-47ba-90a7-4d1a2cce8b33"
         }
     ]
 }
 
 export function bridgeReducer(state: BridgeState = initState, action: BridgeActionTypes): BridgeState {
-    if (action.type === TRANSFER_LOADED){
+    if (action.type === TRANSFER_LOADED) {
         return Object.assign({}, state, {
             sign_objects: [...state.sign_objects, action.payload]
+        });
+    }
+    if (action.type === TRANSFER_RESULT_SIGN) {
+        const {sign_objects} = state;
+        const {transfer_id} = action.payload;
+        const index = sign_objects.findIndex(x => x.transfer_id === transfer_id);
+        const target_object = sign_objects[index];
+        const new_object = Object.assign({}, target_object, {
+            result: action.payload.result,
+            beneficiary_result: action.payload
+        });
+        return Object.assign({}, state, {
+            sign_objects: [
+                ...sign_objects.slice(0, index), // everything before current post
+                new_object,
+                ...sign_objects.slice(index + 1), // everything after current post
+            ]
         });
     }
     return state;
