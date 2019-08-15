@@ -35,7 +35,7 @@ const App = () => (
                 </div>
             </div>
             <div className="col-md offset-md m-2">
-                <h2>Beneficiary</h2>
+                <h2>Beneficiary VASP</h2>
                 <div style={marginTopSm}>
                     <Beneficiary/>
                 </div>
