@@ -29,7 +29,7 @@ const App = () => (
 
         <div className="row" style={marginTop}>
             <div className="col-md offset-md m-2">
-                <h2>Originator</h2>
+                <h2>Originator VASP</h2>
                 <div style={marginTopSm}>
                     <Originator/>
                 </div>

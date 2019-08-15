@@ -35,9 +35,9 @@ class Bridge extends Component<BridgeProps, any> {
         return (
             <div className="grid-striped">
                 <div className="row font-weight-bold py-2">
-                    <div className="col">#</div>
-                    <div className="col">Originator VASP</div>
-                    <div className="col">Beneficiary VASP</div>
+                    <div className="col-1">#</div>
+                    <div className="col">Originator VASP code</div>
+                    <div className="col">Beneficiary VASP code</div>
                     <div className="col">Beneficiary</div>
                     <div className="col">Result</div>
                     <div className="col"></div>

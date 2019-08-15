@@ -20,7 +20,7 @@ export default class Transfer extends Component {
         const {transfer_id, result} = sign_object;
         return [
             <div key={`${transfer_id}`} className="row py-2" id={transfer_id}>
-                <div className="col">{idx + 1}</div>
+                <div className="col-1">{idx + 1}</div>
                 <div className="col">{originator_vasp_code}</div>
                 <div className="col">{beneficiary_vasp_code}</div>
                 <div className="col">{beneficiary_name}</div>
