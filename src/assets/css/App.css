@@ -35,3 +35,8 @@
 .grid-striped .row:not(.bridge_detail):nth-of-type(odd) {
     background-color: rgba(0, 0, 0, .05);
 }
+
+div.alert {
+    cursor: pointer;
+    margin-bottom: 0rem;
+}

@@ -13,11 +13,11 @@ const initState = {
         amount: 0.269726
     },
     originator_info: {
-        name: "VASP 6",
-        physical_address: "Taipei,Taiwan",
+        name: "John Armstrong",
+        physical_address: "Bahnhofstrasse 665, 8001 Zurich, Switzerland",
         national_identity_number: "886",
         date_of_birth: "2009-01-03",
-        unique_identity: "VASP 6"
+        unique_identity: "John"
     },
     error_msg: ""
 };

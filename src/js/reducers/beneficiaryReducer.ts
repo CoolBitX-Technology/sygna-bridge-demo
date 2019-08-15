@@ -39,7 +39,14 @@ export function beneficiaryReducer(state: BeneficiaryState = initialState, actio
     if (action.type === TRANSFER_LOADED) {
         return Object.assign({}, state, {
             sign_object: action.payload,
-            verified_status: NONE
+            verified_status: NONE,
+            originator_info: {
+                name: "",
+                physical_address: "",
+                national_identity_number: "",
+                date_of_birth: "",
+                unique_identity: ""
+            }
         });
     }
     if (action.type === TRANSFER_RESULT_SIGN) {
