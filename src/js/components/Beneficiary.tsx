@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import {OriginatorInfo} from "../reducers/types";
 import {AppState} from "../reducers";
 import {connect} from "react-redux";
 import ReactJson from 'react-json-view'
@@ -16,7 +15,7 @@ interface BeneficiaryProps {
     transferVerify: Function,
     verified_status: string,
     sign_object: any,
-    originator_info: OriginatorInfo
+    private_info: any
 }
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
@@ -32,7 +31,7 @@ const mapStateToProps = (state: AppState) => {
     return {
         verified_status: beneficiary.verified_status,
         sign_object: beneficiary.sign_object,
-        originator_info: beneficiary.originator_info
+        private_info: beneficiary.private_info
     }
 };
 
@@ -77,7 +76,7 @@ class Beneficiary extends Component<BeneficiaryProps, any> {
         const {
             verified_status,
             sign_object,
-            originator_info
+            private_info
         } = this.props;
         const {transfer_id} = sign_object;
         const variant = (verified_status === SUCCESS)? "success": "danger";
@@ -135,7 +134,7 @@ class Beneficiary extends Component<BeneficiaryProps, any> {
                 <div className="row" style={marginTopSm}>
                     <div className="col-md">
                         <ReactJson name="transfer_info" displayDataTypes={false} src={sign_object} collapseStringsAfterLength={30}/>
-                        <ReactJson name="originator_info" displayDataTypes={false} src={originator_info} collapseStringsAfterLength={30}/>
+                        <ReactJson name="private_info" displayDataTypes={false} src={private_info} collapseStringsAfterLength={30}/>
                     </div>
                 </div>
             </div>

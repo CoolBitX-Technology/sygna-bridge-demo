@@ -11,26 +11,30 @@ import {NONE} from "../constants/status";
 const initialState = {
     verified_status: NONE,
     sign_object: {
-        "private_info": "046fdd18954d0cb1ab4228cded96d7ce998c228ac427bcd11456be2e6785e22fc29e8cb08a2fb8993676a65e3e7da8f4dc0d04e16e3c4b143436d8208f8b20b7bb8b66dd76b4fb6da81d8e141583c23ed4a64a4d2ef7e3e08c0fec3a06b6d212f9f27a7c7fb8c33661194be5e8b2bac30eff1703c1616c7aa680c21edd970637232112e4595675fd9a872b336c8cc5509b2542107d20506295add107ed2752eebc96be260d26185470e1baaacd389de6e444fa1fd6c531dac4d163af14acc4cdbcd1817cebdcac053fd86ed28a808ee14e2c39556edc02bf3b400d82bc4837a79aaec16feb",
+        "private_info": "04bb2aae0e33fbe50ffb6121375a4e0f46c9003d946ba96499d5a9c30f077393dc36d89744b3749bcb23c5d523bbf7157ea55410a8bc16aa0f9c414310ec3657fb96a974aba1c1321e831857996acbcb7146c68efeaf97db5b9c6c3331fad23538b7a945f4e2dff8416144f7a0aa644d10f7c914b2507a36732cabd1fd991ed6cf120bca00d48482e27e44fd51ef19c1b85ce5d6e473de169ccbd54f15365c95515442af6833599eb07eb4a13494ca25cb885fa41e18d7611c75288d865141e65b63bf99e66ac5c1383637cb276ecf4f3f63e11f6fe92b7464970143d065d21152bab5787dd4466492a57dcf998090bff55ad2f332413c3b13ac8c362461c8c7b20ee08604cf93a59b7521f47153756c8e52eca88258821b3be6d22978685d1661b1dee99e0bd84a4f9a5325f814d47dbf2f10d67723100eb4d9b0815bbfdb05132c3813a5",
         "transaction": {
-            "beneficiary_vasp_code": "V2",
-            "beneficiary_name": "John",
+            "beneficiary_vasp_code": "VASPUSNY",
             "originator_addr": "0x05ECAf39376088D7C8bF1aCc06015F71e35bFE35",
-            "originator_vasp_code": "V6",
+            "originator_vasp_code": "VASPJPJT",
             "beneficiary_addr": "0x0b696FEB926675a2f8B55644A1669b43b9924C03",
             "transaction_currency": "0x8000003c",
             "amount": 0.347895
         },
-        "data_dt": "",
-        "signature": "f6f7bab547bde36e4a020b013cefd37d36379d92f6f295d3fedb00a2b1a8ddf074fa246b9e5a1c9e33ec103838dcae5fa08f1d9cd9e782612f793216040497e6",
-        "transfer_id": "176ee01d-8be8-47ba-90a7-4d1a2cce8b33"
+        "data_dt": "2019-08-15T10:28:10.364Z",
+        "signature": "9eee630c20a2aa894373216b32343c429621b02f29c35130e7573f4d775edd8e7fd50f1a5813a234246785a2fcd542058a0b6ca3d56bc6719b8eb14c88b19301",
+        "transfer_id": "01ca7589-f697-4637-931e-aa8922999112"
     },
-    originator_info: {
-        name: "",
-        physical_address: "",
-        national_identity_number: "",
-        date_of_birth: "",
-        unique_identity: ""
+    private_info: {
+        "originator": {
+            "name": "",
+            "date_of_birth": "",
+            "physical_address": "",
+            "national_identity_number": "",
+            "unique_identity": ""
+        },
+        "beneficiary": {
+            "name": ""
+        }
     }
 };
 
@@ -40,12 +44,17 @@ export function beneficiaryReducer(state: BeneficiaryState = initialState, actio
         return Object.assign({}, state, {
             sign_object: action.payload,
             verified_status: NONE,
-            originator_info: {
-                name: "",
-                physical_address: "",
-                national_identity_number: "",
-                date_of_birth: "",
-                unique_identity: ""
+            private_info: {
+                originator: {
+                    name: "",
+                    date_of_birth: "",
+                    physical_address: "",
+                    national_identity_number: "",
+                    unique_identity: ""
+                },
+                beneficiary: {
+                    name: ""
+                }
             }
         });
     }
@@ -59,7 +68,7 @@ export function beneficiaryReducer(state: BeneficiaryState = initialState, actio
     }
     if (action.type === TRANSFER_DECRYPT_RESULT) {
         return Object.assign({}, state, {
-            originator_info: action.payload
+            private_info: action.payload
         });
     }
     if (action.type === TRANSFER_VERIFY_RESULT) {

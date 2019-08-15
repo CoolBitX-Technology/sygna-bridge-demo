@@ -21,9 +21,22 @@ export function bridgeMiddleware({dispatch}: MiddlewareProps) {
     return function (next: Function) {
         return function (action: BridgeActionTypes) {
             if (action.type === TRANSFER_REQUEST) {
-                const {originator_info, transfer_info} = action.payload;
-                const private_info = crypto.sygnaEncodePrivateObj(originator_info, BENEFICIARY_PUBLIC_KEY);
-                let sign_object = crypto.signTransferData(private_info, transfer_info, "", ORIGINATOR_PRIVATE_KEY);
+                const {originator_info, transfer_info, beneficiary_info} = action.payload;
+                const encrypt_info = {
+                    originator: {
+                        name: originator_info.name,
+                        date_of_birth: originator_info.date_of_birth,
+                        physical_address: originator_info.physical_address,
+                        national_identity_number: originator_info.national_identity_number,
+                        unique_identity: originator_info.unique_identity
+                    },
+                    beneficiary:{
+                        name: beneficiary_info.beneficiary_name
+                    }
+                };
+                const private_info = crypto.sygnaEncodePrivateObj(encrypt_info, BENEFICIARY_PUBLIC_KEY);
+                const data_dt = new Date();
+                let sign_object = crypto.signTransferData(private_info, transfer_info, data_dt.toISOString(), ORIGINATOR_PRIVATE_KEY);
                 sign_object.transfer_id = uuidv1();
                 return dispatch(transferLoaded(sign_object));
             }

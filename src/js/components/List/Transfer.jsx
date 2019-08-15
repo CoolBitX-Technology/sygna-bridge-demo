@@ -14,8 +14,7 @@ export default class Transfer extends Component {
         } = this.props;
         const {
             originator_vasp_code,
-            beneficiary_vasp_code,
-            beneficiary_name,
+            beneficiary_vasp_code
         } = sign_object.transaction;
         const {transfer_id, result} = sign_object;
         return [
@@ -23,7 +22,6 @@ export default class Transfer extends Component {
                 <div className="col-1">{idx + 1}</div>
                 <div className="col">{originator_vasp_code}</div>
                 <div className="col">{beneficiary_vasp_code}</div>
-                <div className="col">{beneficiary_name}</div>
                 <div className="col">{(result) ? result : WAITING}</div>
                 <div className="col">
                     <Button variant="info" size="sm"

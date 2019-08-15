@@ -38,7 +38,6 @@ class Bridge extends Component<BridgeProps, any> {
                     <div className="col-1">#</div>
                     <div className="col">Originator VASP code</div>
                     <div className="col">Beneficiary VASP code</div>
-                    <div className="col">Beneficiary</div>
                     <div className="col">Result</div>
                     <div className="col"></div>
                 </div>

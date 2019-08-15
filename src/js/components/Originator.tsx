@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {Dispatch} from "redux";
-import {OriginatorInfo, TransferDetail, TransferInfo} from "../reducers/types";
+import {BeneficiaryInfo, OriginatorInfo, TransferDetail, TransferInfo} from "../reducers/types";
 import {transferRequest} from "../actions";
 import {AppState} from "../reducers";
 import {connect} from "react-redux";
@@ -14,6 +14,7 @@ interface OriginatorProps {
     transferRequest: Function;
     transfer_info: TransferInfo;
     originator_info: OriginatorInfo;
+    beneficiary_info: BeneficiaryInfo;
     error_msg: string;
 }
 
@@ -28,6 +29,7 @@ const mapStateToProps = (state: AppState) => {
     return {
         transfer_info: originator.transfer_info,
         originator_info: originator.originator_info,
+        beneficiary_info: originator.beneficiary_info,
         error_msg: originator.error_msg
     }
 };
@@ -96,7 +98,6 @@ class Originator extends Component<OriginatorProps, any> {
         } = this.state;
         const transfer_info = Object.assign({}, this.props.transfer_info, {
             beneficiary_vasp_code,
-            beneficiary_name,
             originator_addr,
             originator_vasp_code,
             beneficiary_addr,
@@ -110,9 +111,13 @@ class Originator extends Component<OriginatorProps, any> {
             date_of_birth: originator_date_of_birth,
             unique_identity: originator_unique_identity
         });
+        const beneficiary_info = Object.assign({}, this.props.beneficiary_info, {
+            beneficiary_name
+        });
         this.props.transferRequest({
             transfer_info,
-            originator_info
+            originator_info,
+            beneficiary_info
         });
     }
 
