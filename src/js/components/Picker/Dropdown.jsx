@@ -15,7 +15,6 @@ export default class Dropdown extends React.Component {
                     value={selectedValue}>
                 <option value="" disabled>{title}</option>
                 {Object.keys(src).map((key, idx) => {
-                        // @ts-ignore
                         const item = src[key];
                         return (
                             <option key={key} value={key}>{item}</option>

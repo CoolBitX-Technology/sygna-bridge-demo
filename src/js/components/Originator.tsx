@@ -7,6 +7,8 @@ import {connect} from "react-redux";
 import Alert from "react-bootstrap/Alert";
 import Collapse from "react-bootstrap/Collapse";
 import Dropdown from "./Picker/Dropdown.jsx";
+import DayPickerInput from 'react-day-picker/DayPickerInput';
+
 
 interface OriginatorProps {
     transferRequest: Function;
@@ -30,6 +32,16 @@ const mapStateToProps = (state: AppState) => {
     }
 };
 
+const formateDate = (date: Date) => {
+    var mm = date.getMonth() + 1; // getMonth() is zero-based
+    var dd = date.getDate();
+
+    return [date.getFullYear(),
+        (mm > 9 ? '' : '0') + mm,
+        (dd > 9 ? '' : '0') + dd
+    ].join('-');
+};
+
 class Originator extends Component<OriginatorProps, any> {
     constructor(props: OriginatorProps) {
         super(props);
@@ -37,12 +49,15 @@ class Originator extends Component<OriginatorProps, any> {
             transaction_currency: "0x8000003c",
             amount: 0.347895,
             beneficiary_addr: "0x0b696FEB926675a2f8B55644A1669b43b9924C03",
-            originator_vasp_code: "V1",
-            originator_name: "John Armstrong",
-            beneficiary_vasp_code: "V2",
-            beneficiary_name: "Satoshi Nakamoto",
+            originator_vasp_code: "VASPJPJT",
+            originator_name: "David Beckham",
+            beneficiary_vasp_code: "VASPUSNY",
+            beneficiary_name: "Antoine Griezmann",
             originator_addr: "0x05ECAf39376088D7C8bF1aCc06015F71e35bFE35",
             originator_physical_address: "Bahnhofstrasse 665, 8001 Zurich, Switzerland",
+            originator_national_identity_number: "",
+            originator_date_of_birth: "1975-05-02",
+            originator_unique_identity: "",
             transfer_open: true,
             beneficiary_open: true,
             originator_open: true,
@@ -52,10 +67,15 @@ class Originator extends Component<OriginatorProps, any> {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.setOpen = this.setOpen.bind(this);
+        this.handleDayChange = this.handleDayChange.bind(this);
     }
 
     handleChange(event: any) {
         this.setState({[event.target.id]: event.target.value});
+    }
+
+    handleDayChange(day: any) {
+        this.setState({originator_date_of_birth: formateDate(day)});
     }
 
     handleSubmit(event: any) {
@@ -69,7 +89,10 @@ class Originator extends Component<OriginatorProps, any> {
             beneficiary_vasp_code,
             beneficiary_name,
             originator_addr,
-            originator_physical_address
+            originator_physical_address,
+            originator_national_identity_number,
+            originator_date_of_birth,
+            originator_unique_identity
         } = this.state;
         const transfer_info = Object.assign({}, this.props.transfer_info, {
             beneficiary_vasp_code,
@@ -82,7 +105,10 @@ class Originator extends Component<OriginatorProps, any> {
         });
         const originator_info = Object.assign({}, this.props.originator_info, {
             name: originator_name,
-            physical_address: originator_physical_address
+            physical_address: originator_physical_address,
+            national_identity_number: originator_national_identity_number,
+            date_of_birth: originator_date_of_birth,
+            unique_identity: originator_unique_identity
         });
         this.props.transferRequest({
             transfer_info,
@@ -105,15 +131,17 @@ class Originator extends Component<OriginatorProps, any> {
             beneficiary_name,
             originator_addr,
             originator_physical_address,
+            originator_national_identity_number,
+            originator_date_of_birth,
+            originator_unique_identity,
             transfer_open,
             beneficiary_open,
             originator_open,
         } = this.state;
         const {error_msg} = this.props;
         const vasp_list = {
-            "V1": "VASP 1",
-            "V2": "VASP 2",
-            "V3": "VASP 3",
+            "VASPUSNY": "VASP in New York, USA",
+            "VASPJPJT": "VASP in Tokyo, Japan"
         };
         const currency_list = {
             "0x80000000": "BTC",
@@ -157,16 +185,6 @@ class Originator extends Component<OriginatorProps, any> {
                                         onChange={this.handleChange}
                                     />
                                 </div>
-                                <div className="input-group">
-                                    <input
-                                        type="text"
-                                        className="form-control mt-1"
-                                        id="beneficiary_addr"
-                                        value={beneficiary_addr}
-                                        placeholder="Beneficiary Address"
-                                        onChange={this.handleChange}
-                                    />
-                                </div>
                             </div>
                         </Collapse>
                     </div>
@@ -198,6 +216,16 @@ class Originator extends Component<OriginatorProps, any> {
                                               selectedValue={beneficiary_vasp_code}
                                               onChange={this.handleChange}/>
                                 </div>
+                                <div className="input-group">
+                                    <input
+                                        type="text"
+                                        className="form-control mt-1"
+                                        id="beneficiary_addr"
+                                        value={beneficiary_addr}
+                                        placeholder="Beneficiary Address"
+                                        onChange={this.handleChange}
+                                    />
+                                </div>
                             </div>
                         </Collapse>
                     </div>
@@ -221,7 +249,7 @@ class Originator extends Component<OriginatorProps, any> {
                                         className="form-control mt-1"
                                         id="originator_name"
                                         value={originator_name}
-                                        placeholder="Originator Name"
+                                        placeholder="Name"
                                         onChange={this.handleChange}
                                     />
                                     <Dropdown id="originator_vasp_code" src={vasp_list} title="Choose Originator VASP"
@@ -235,7 +263,7 @@ class Originator extends Component<OriginatorProps, any> {
                                         className="form-control mt-1"
                                         id="originator_addr"
                                         value={originator_addr}
-                                        placeholder="Originator Address"
+                                        placeholder="Crypto Address"
                                         onChange={this.handleChange}
                                     />
                                 </div>
@@ -245,7 +273,36 @@ class Originator extends Component<OriginatorProps, any> {
                                         className="form-control mt-1"
                                         id="originator_physical_address"
                                         value={originator_physical_address}
-                                        placeholder="Originator Physical Address"
+                                        placeholder="Physical Address"
+                                        onChange={this.handleChange}
+                                    />
+                                </div>
+                                <div className="input-group">
+                                    <DayPickerInput
+                                        inputProps={{className: 'form-control mt-1'}}
+                                        format="YYYY-MM-DD"
+                                        onDayChange={this.handleDayChange}
+                                        placeholder="Date of birth"
+                                        value={originator_date_of_birth}
+                                    />
+                                </div>
+                                <div className="input-group">
+                                    <input
+                                        type="text"
+                                        className="form-control mt-1"
+                                        id="originator_national_identity_number"
+                                        value={originator_national_identity_number}
+                                        placeholder="National Identity Number"
+                                        onChange={this.handleChange}
+                                    />
+                                </div>
+                                <div className="input-group">
+                                    <input
+                                        type="text"
+                                        className="form-control mt-1"
+                                        id="originator_unique_identity"
+                                        value={originator_unique_identity}
+                                        placeholder="Unique Identity"
                                         onChange={this.handleChange}
                                     />
                                 </div>
