@@ -7,10 +7,12 @@ import Beneficiary from "./Beneficiary";
 import Bridge from "./Bridge";
 
 const marginTop = {
-    marginTop: '60px'
+    marginTop: '60px',
+    marginLeft: '2px',
+    marginRight: '2px'
 };
 const marginTopSm = {
-    marginTop: '10px'
+    marginTop: '10px',
 };
 
 const App = () => (
@@ -28,21 +30,19 @@ const App = () => (
         </Navbar>
 
         <div className="row" style={marginTop}>
-            <div className="col-md offset-md m-2">
+            <div className="col-md-6 order-md-1 order-sm-1 order-1 pt-md-3 pl-md-3 pr-md-3 p-0 pt-3">
                 <h2>Originator VASP</h2>
                 <div style={marginTopSm}>
                     <Originator/>
                 </div>
             </div>
-            <div className="col-md offset-md m-2">
+            <div className="col-md-6 order-md-2 order-sm-3 order-3 pt-md-3 pl-md-3 pr-md-3 p-0 pt-3">
                 <h2>Beneficiary VASP</h2>
                 <div style={marginTopSm}>
                     <Beneficiary/>
                 </div>
             </div>
-        </div>
-        <div className="row mt-5">
-            <div className="col-md offset-md m-2">
+            <div className="col-md-12 order-md-3 order-sm-2 order-2 pt-md-3 pl-md-3 pr-md-3 p-0 pt-3">
                 <h2>Bridge</h2>
                 <div style={marginTopSm}>
                     <Bridge/>

@@ -8,7 +8,7 @@ import Alert from "react-bootstrap/Alert";
 import Collapse from "react-bootstrap/Collapse";
 import Dropdown from "./Picker/Dropdown.jsx";
 import DayPickerInput from 'react-day-picker/DayPickerInput';
-
+import Utils from "../utils";
 
 interface OriginatorProps {
     transferRequest: Function;
@@ -32,16 +32,6 @@ const mapStateToProps = (state: AppState) => {
         beneficiary_info: originator.beneficiary_info,
         error_msg: originator.error_msg
     }
-};
-
-const formateDate = (date: Date) => {
-    var mm = date.getMonth() + 1; // getMonth() is zero-based
-    var dd = date.getDate();
-
-    return [date.getFullYear(),
-        (mm > 9 ? '' : '0') + mm,
-        (dd > 9 ? '' : '0') + dd
-    ].join('-');
 };
 
 class Originator extends Component<OriginatorProps, any> {
@@ -77,7 +67,7 @@ class Originator extends Component<OriginatorProps, any> {
     }
 
     handleDayChange(day: any) {
-        this.setState({originator_date_of_birth: formateDate(day)});
+        this.setState({originator_date_of_birth: Utils.Locale.formateDate(day) });
     }
 
     handleSubmit(event: any) {

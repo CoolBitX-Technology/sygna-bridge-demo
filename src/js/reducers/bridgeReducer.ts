@@ -5,18 +5,18 @@ import {TRANSFER_LOADED, TRANSFER_RESULT_SIGN} from "../constants/action-types";
 const initState = {
     sign_objects: [
         {
-            "private_info": "046fdd18954d0cb1ab4228cded96d7ce998c228ac427bcd11456be2e6785e22fc29e8cb08a2fb8993676a65e3e7da8f4dc0d04e16e3c4b143436d8208f8b20b7bb8b66dd76b4fb6da81d8e141583c23ed4a64a4d2ef7e3e08c0fec3a06b6d212f9f27a7c7fb8c33661194be5e8b2bac30eff1703c1616c7aa680c21edd970637232112e4595675fd9a872b336c8cc5509b2542107d20506295add107ed2752eebc96be260d26185470e1baaacd389de6e444fa1fd6c531dac4d163af14acc4cdbcd1817cebdcac053fd86ed28a808ee14e2c39556edc02bf3b400d82bc4837a79aaec16feb",
+            "private_info": "0463819c52c6db0f5bd28d51eb7b53e8ad8e89294921ecdabc5c602e85825528cfaa33df614c0e25edaf97b9e0216ced0bb2bc4c8eb51f47a4e956f34a4012adf51852bda9a05df2b5d48ca2ea4f804b1b35040c23939d9f61188038efd6833ac7c8ee399eaf7855fda58b3a91301bfc95bed7bb9056a459f586149e04908a0c736ed1ff2d107228c440b323981899102612cae42d2596e40493770d4224cd82e0a040b5d7e1ac3812f6683200d094a92fafcd0add98350fb8b39b62df3025cad2425997a5aac358ab9252be0bc0f2f84908271e5c3050566e5908356e00bdea455b2e1883e44fe6733e77f0637f3e99c9d08ceb5628fed29ab5d9ef12bfd9f165db984a8228ac99302d02ca9d858e602207100601cf6d5e2e9e713d4b340e55da4cdf8dd0436c38b8ebb6013f4d450feb088de5bc52c5daddbe8ab5f6ff59146987d4d2bd",
             "transaction": {
-                "beneficiary_vasp_code": "V2",
+                "beneficiary_vasp_code": "VASPUSNY",
                 "originator_addr": "0x05ECAf39376088D7C8bF1aCc06015F71e35bFE35",
-                "originator_vasp_code": "V1",
+                "originator_vasp_code": "VASPJPJT",
                 "beneficiary_addr": "0x0b696FEB926675a2f8B55644A1669b43b9924C03",
                 "transaction_currency": "0x8000003c",
                 "amount": 0.347895
             },
-            "data_dt": "",
-            "signature": "f6f7bab547bde36e4a020b013cefd37d36379d92f6f295d3fedb00a2b1a8ddf074fa246b9e5a1c9e33ec103838dcae5fa08f1d9cd9e782612f793216040497e6",
-            "transfer_id": "176ee01d-8be8-47ba-90a7-4d1a2cce8b33"
+            "data_dt": "2019-08-16T02:37:33.582Z",
+            "signature": "3a61dab5a821bdb67e65990a88ff4950f045442e753d58575392a85954073be77e2f0a1f34de3c36e0f4e49272e2350af1beff22a9344ba5e239203b7718f5fc",
+            "transfer_id": "92d00213-80da-41d3-8c39-38e6c8b9a373"
         }
     ]
 }

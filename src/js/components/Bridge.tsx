@@ -25,8 +25,14 @@ class Bridge extends Component<BridgeProps, any> {
 
     showDetail(event: any, transfer_id: string, idx: number = 0) {
         event.preventDefault();
+        let val;
+        if(event.target.type !== "button"){
+            val = event.target.parentNode.getAttribute("value")
+        } else {
+            val = event.target.value
+        }
         this.setState({
-            open_id: (event.target.value === "true") ? "" : transfer_id
+            open_id: (val === "true") ? "" : transfer_id
         });
     }
 
@@ -39,7 +45,7 @@ class Bridge extends Component<BridgeProps, any> {
                     <div className="col">Originator VASP code</div>
                     <div className="col">Beneficiary VASP code</div>
                     <div className="col">Result</div>
-                    <div className="col"></div>
+                    <div className="col d-none d-sm-block"></div>
                 </div>
                 {sign_objects.map((el, idx) => (
                         <Transfer

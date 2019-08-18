@@ -18,12 +18,15 @@ export default class Transfer extends Component {
         } = sign_object.transaction;
         const {transfer_id, result} = sign_object;
         return [
-            <div key={`${transfer_id}`} className="row py-2" id={transfer_id}>
+            <div key={`${transfer_id}`} className="row py-2" id={transfer_id} value={open}
+                 onClick={(event) => {
+                     handleClick(event)
+                 }}>
                 <div className="col-1">{idx + 1}</div>
                 <div className="col">{originator_vasp_code}</div>
                 <div className="col">{beneficiary_vasp_code}</div>
                 <div className="col">{(result) ? result : WAITING}</div>
-                <div className="col">
+                <div className="col d-none d-sm-block">
                     <Button variant="info" size="sm"
                             aria-expanded={open}
                             value={open}
