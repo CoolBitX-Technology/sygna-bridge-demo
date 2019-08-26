@@ -128,7 +128,7 @@ class Beneficiary extends Component<BeneficiaryProps, any> {
                 </div>
                 {(verified_status !== NONE) && (
                     <Alert variant={variant}>
-                        Verify result is {verified_status}
+                        {verified_status}
                     </Alert>
                 )}
                 <div className="row" style={marginTopSm}>
