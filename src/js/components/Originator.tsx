@@ -217,7 +217,7 @@ class Originator extends Component<OriginatorProps, any> {
                                         className="form-control mt-1"
                                         id="beneficiary_addr"
                                         value={beneficiary_addr}
-                                        placeholder="Beneficiary Address"
+                                        placeholder="Beneficiary Virtual Asset Address"
                                         onChange={this.handleChange}
                                     />
                                 </div>
@@ -258,7 +258,7 @@ class Originator extends Component<OriginatorProps, any> {
                                         className="form-control mt-1"
                                         id="originator_addr"
                                         value={originator_addr}
-                                        placeholder="Crypto Address"
+                                        placeholder="Originator Virtual Asset Address"
                                         onChange={this.handleChange}
                                     />
                                 </div>
