@@ -9,7 +9,7 @@
     "saga",
     "typescript"
   ],
-  "homepage": "https://coolbitx.gitlab.io/sygna/bridge/sygna-bridge-demo",
+  "homepage": "https://coolbitx-technology.github.io/sygna-bridge-demo",
   "dependencies": {
     "@types/jest": "^24.0.16",
     "@types/node": "^12.6.9",
@@ -31,7 +31,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build --prod",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -49,6 +51,7 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^2.2.0",
     "react-redux": "^7.1.0",
     "redux": "^4.0.4",
     "redux-saga": "^1.0.5",

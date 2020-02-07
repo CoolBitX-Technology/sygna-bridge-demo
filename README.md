@@ -1,4 +1,4 @@
-# [Sygna Bridge Demo](https://coolbitx.gitlab.io/sygna/bridge/sygna-bridge-demo)
+# [Sygna Bridge Demo](https://coolbitx-technology.github.io/sygna-bridge-demo/)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
