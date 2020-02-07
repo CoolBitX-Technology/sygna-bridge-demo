@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/sygna/bridge/sygna-bridge-demo/static/css/main.c44da6bd.chunk.css",
-    "main.js": "/sygna/bridge/sygna-bridge-demo/static/js/main.7ee3abac.chunk.js",
-    "main.js.map": "/sygna/bridge/sygna-bridge-demo/static/js/main.7ee3abac.chunk.js.map",
-    "runtime~main.js": "/sygna/bridge/sygna-bridge-demo/static/js/runtime~main.17a4951b.js",
-    "runtime~main.js.map": "/sygna/bridge/sygna-bridge-demo/static/js/runtime~main.17a4951b.js.map",
-    "static/css/2.93b55bd0.chunk.css": "/sygna/bridge/sygna-bridge-demo/static/css/2.93b55bd0.chunk.css",
-    "static/js/2.3d37cadd.chunk.js": "/sygna/bridge/sygna-bridge-demo/static/js/2.3d37cadd.chunk.js",
-    "static/js/2.3d37cadd.chunk.js.map": "/sygna/bridge/sygna-bridge-demo/static/js/2.3d37cadd.chunk.js.map",
-    "index.html": "/sygna/bridge/sygna-bridge-demo/index.html",
-    "precache-manifest.2601e085ced05b5af810b6da76e181bb.js": "/sygna/bridge/sygna-bridge-demo/precache-manifest.2601e085ced05b5af810b6da76e181bb.js",
-    "service-worker.js": "/sygna/bridge/sygna-bridge-demo/service-worker.js",
-    "static/css/2.93b55bd0.chunk.css.map": "/sygna/bridge/sygna-bridge-demo/static/css/2.93b55bd0.chunk.css.map",
-    "static/css/main.c44da6bd.chunk.css.map": "/sygna/bridge/sygna-bridge-demo/static/css/main.c44da6bd.chunk.css.map",
-    "static/media/logo.png": "/sygna/bridge/sygna-bridge-demo/static/media/logo.a50e28d5.png"
+    "main.css": "/sygna-bridge-demo/static/css/main.c44da6bd.chunk.css",
+    "main.js": "/sygna-bridge-demo/static/js/main.2f5bdf59.chunk.js",
+    "main.js.map": "/sygna-bridge-demo/static/js/main.2f5bdf59.chunk.js.map",
+    "runtime~main.js": "/sygna-bridge-demo/static/js/runtime~main.b7892b81.js",
+    "runtime~main.js.map": "/sygna-bridge-demo/static/js/runtime~main.b7892b81.js.map",
+    "static/css/2.93b55bd0.chunk.css": "/sygna-bridge-demo/static/css/2.93b55bd0.chunk.css",
+    "static/js/2.3d37cadd.chunk.js": "/sygna-bridge-demo/static/js/2.3d37cadd.chunk.js",
+    "static/js/2.3d37cadd.chunk.js.map": "/sygna-bridge-demo/static/js/2.3d37cadd.chunk.js.map",
+    "index.html": "/sygna-bridge-demo/index.html",
+    "precache-manifest.016b4eaa9fe979e115a947c9eafbbe3c.js": "/sygna-bridge-demo/precache-manifest.016b4eaa9fe979e115a947c9eafbbe3c.js",
+    "service-worker.js": "/sygna-bridge-demo/service-worker.js",
+    "static/css/2.93b55bd0.chunk.css.map": "/sygna-bridge-demo/static/css/2.93b55bd0.chunk.css.map",
+    "static/css/main.c44da6bd.chunk.css.map": "/sygna-bridge-demo/static/css/main.c44da6bd.chunk.css.map",
+    "static/media/logo.png": "/sygna-bridge-demo/static/media/logo.a50e28d5.png"
   }
 }
